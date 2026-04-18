@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Saran",
+    "slug": "saran",
+    "role": "Rapper / Producer",
+    "image": "/images/artists/saran.jpg",
+    "bio": "Founder of DIEOUT. Master of sound design and lyrical warfare.",
+    "top": true,
+    "trending": true,
+    "songs": [
+      {
+        "title": "Digital Warfare",
+        "youtube": "https://youtube.com/watch?v=xxx"
+      },
+      {
+        "title": "Neon Nights",
+        "youtube": "https://youtube.com/watch?v=yyy"
+      }
+    ],
+    "social": {
+      "youtube": "https://youtube.com/@saran",
+      "spotify": "https://open.spotify.com/artist/saran",
+      "appleMusic": "https://music.apple.com/artist/saran"
+    }
+  },
+  {
+    "name": "Saran",
+    "slug": "saran",
+    "role": "Rapper",
+    "image": "/images/artists/saran.jpg",
+    "bio": "SARAN DIEOUT",
+    "top": true,
+    "trending": false,
+    "songs": [
+      {
+        "title": "DIEOUT GANG",
+        "youtube": "https://www.youtube.com/channel/UCoSmqwN7LYbr-mO8ekglkag"
+      }
+    ],
+    "social": {
+      "youtube": "https://www.youtube.com/channel/UCoSmqwN7LYbr-mO8ekglkag",
+      "spotify": "https://open.spotify.com/artist/3moR9d0X97NAtZRhHWOta5",
+      "appleMusic": "youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqa3BvRFJCX0l6UUF6Mkw3b2gyU1pJMzBpSC0xUXxBQ3Jtc0tuQXhjZmR6QTZabXBtZzRhYUQ1WWxXbnphMHVRMW5BbUFnb3RkdGpPNTBsWEkxLUc1STlLMFBSRXJCT3pyNFVmRENfOVFGd1E2Zzk5d2tsRkZfTGs1ZUs2cWhDS2ZFcWRMVnc1YzkwNG5UemFnZHhCVQ&q=https%3A%2F%2Fmusic.apple.com%2Fth%2Fartist%2Fsaran%2F1133460295%2Fsee-all%3Fsection%3Dtop-songs"
+    }
+  },
+  {
+    "name": "SEXSK1",
+    "slug": "SEXSK1",
+    "role": "Hiphop/Rapper",
+    "image": "/images/artists/sexski.jpg",
+    "bio": "YOUNG SEXSK1",
+    "top": false,
+    "trending": true,
+    "songs": [
+      {
+        "title": "Sexski - รู้ตัวอีกที Feat. 2TFLOW",
+        "youtube": "https://www.youtube.com/watch?v=TrNx67Hmd-0"
+      }
+    ],
+    "social": {
+      "youtube": "https://www.youtube.com/@youngsekslatt",
+      "spotify": "https://open.spotify.com/artist/6QeYcD1n2YcWygCScfLhRE",
+      "appleMusic": "https://music.apple.com/th/artist/sexski/1677498358"
+    }
+  }
+]
