@@ -12,6 +12,7 @@ const orbitron = Orbitron({
   variable: "--font-orbitron"
 });
 
+// ✅ แก้ตรงนี้: metadata: Metadata (มีเครื่องหมาย : )
 export const metadata: Metadata = {
   title: "DIEOUT | Digital Universe",
   description: "Official website of DIEOUT artist collective",
