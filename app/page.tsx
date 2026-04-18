@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
 
 const Spline = dynamic(
-  () => import('@splinetool/react-spline/next'),
+  () => import('@splinetool/react-spline'),
   { 
     ssr: false, 
     loading: () => <div className="w-full h-full bg-black" /> 
