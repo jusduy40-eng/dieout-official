@@ -1,207 +1,95 @@
-// app/artist/[slug]/page.tsx
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import artistsData from '@/data/artists.json'
-import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect } from 'react'
-import Navbar from '@/components/Navbar'
+import { notFound } from 'next/navigation';
+import artistsData from '@/data/artists.json';
+import Navbar from '@/components/Navbar';
+import Link from 'next/link';
+import { useEffect } from 'react';
+import Image from 'next/image';
 
-// TypeScript Interface
 interface Artist {
-  name: string
-  slug: string
-  role: string
-  image: string
-  bio: string
-  top: boolean
-  trending: boolean
-  songs: Array<{
-    title: string
-    youtube: string
-  }>
-  social: {
-    youtube: string
-    spotify: string
-    appleMusic: string
-  }
+  name: string;
+  slug: string;
+  role: string;
+  image: string;
+  bio: string;
+  top: boolean;
+  trending: boolean;
+  songs: Array<{ title: string; youtube: string }>;
+  social: { youtube: string; spotify: string; appleMusic: string };
 }
 
 export default function ArtistProfile({ params }: { params: { slug: string } }) {
-  const artist = artistsData.find((a) => a.slug === params.slug) as Artist | undefined
+  const artist = artistsData.find((a) => a.slug === params.slug) as Artist | undefined;
 
   useEffect(() => {
-    // Track viewed artist for secret page unlock
     if (artist) {
-      const viewed = JSON.parse(localStorage.getItem('viewedArtists') || '[]')
+      const viewed = JSON.parse(localStorage.getItem('viewedArtists') || '[]');
       if (!viewed.includes(artist.slug)) {
-        viewed.push(artist.slug)
-        localStorage.setItem('viewedArtists', JSON.stringify(viewed))
+        viewed.push(artist.slug);
+        localStorage.setItem('viewedArtists', JSON.stringify(viewed));
       }
     }
-  }, [artist])
+  }, [artist]);
 
-  if (!artist) notFound()
+  if (!artist) notFound();
 
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-12 bg-gradient-to-b from-black via-purple-950 to-black">
+      <main className="min-h-screen pt-24 pb-16 bg-gradient-to-b from-black via-purple-950/30 to-black">
         <div className="max-w-6xl mx-auto px-6">
-          
-          {/* Cover Image Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="relative h-[500px] rounded-3xl overflow-hidden mb-12 shadow-[0_0_50px_rgba(124,58,237,0.3)]"
-          >
-            <Image
-              src={artist.image || '/images/artists/placeholder.jpg'}
-              alt={artist.name}
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+          <div className="relative h-[600px] rounded-3xl overflow-hidden mb-16 shadow-[0_0_60px_rgba(124,58,237,0.3)]">
+            <Image src={artist.image} alt={artist.name} fill className="object-cover" priority />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 via-30% to-transparent" />
             
-            <div className="absolute bottom-0 left-0 p-8 md:p-12">
-              <motion.h1 
-                className="text-5xl md:text-7xl font-bold mb-4 text-gradient"
-                style={{ fontFamily: 'var(--font-orbitron)' }}
-                initial={{ x: -50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
+            <div className="absolute bottom-0 left-0 p-12">
+              <h1 className="text-6xl md:text-8xl font-black mb-4 text-gradient tracking-tighter" style={{ fontFamily: 'var(--font-orbitron)' }}>
                 {artist.name}
-              </motion.h1>
-              <p className="text-xl md:text-2xl text-purple-400 mb-4">{artist.role}</p>
+              </h1>
+              <p className="text-2xl text-purple-400 mb-4 tracking-wider uppercase">{artist.role}</p>
               <p className="text-gray-300 max-w-2xl text-lg">{artist.bio}</p>
             </div>
 
-            {/* Badges */}
-            <div className="absolute top-6 right-6 flex gap-3">
-              {artist.top && (
-                <motion.div 
-                  className="px-4 py-2 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full text-sm font-bold"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.5, type: "spring" }}
-                >
-                  ⭐ TOP ARTIST
-                </motion.div>
-              )}
-              {artist.trending && (
-                <motion.div 
-                  className="px-4 py-2 bg-red-500 rounded-full text-sm font-bold animate-pulse"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.6, type: "spring" }}
-                >
-                  🔥 TRENDING
-                </motion.div>
-              )}
+            <div className="absolute top-8 right-8 flex gap-3">
+              {artist.top && <div className="px-5 py-2 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-sm font-bold">TOP ARTIST</div>}
+              {artist.trending && <div className="px-5 py-2 bg-red-600 rounded-full text-sm font-bold animate-pulse">TRENDING</div>}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Songs Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-8 text-gradient">LATEST TRACKS</h2>
+          <section className="mb-20">
+            <h2 className="text-4xl font-black mb-10 text-gradient tracking-tight">LATEST TRACKS</h2>
             <div className="grid gap-4">
               {artist.songs.map((song, index) => (
-                <motion.div
-                  key={index}
-                  className="glass p-6 rounded-2xl flex items-center justify-between hover:border-purple-500 transition-all cursor-pointer group"
-                  whileHover={{ scale: 1.02, x: 5 }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 flex items-center justify-center text-xl">
-                      🎵
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-1 group-hover:text-purple-400 transition-colors">
-                        {song.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm">Watch on YouTube</p>
-                    </div>
+                <div key={index} className="glass p-8 rounded-2xl flex items-center justify-between hover:border-purple-500/50 transition-all">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-1">{song.title}</h3>
+                    <p className="text-gray-400 text-sm">Watch on YouTube</p>
                   </div>
-                  <Link 
-                    href={song.youtube}
-                    target="_blank"
-                    className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-lg font-bold transition-all hover:shadow-[0_0_20px_rgba(124,58,237,0.5)]"
-                  >
-                    WATCH ▶
+                  <Link href={song.youtube} target="_blank" className="px-8 py-4 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all">
+                    WATCH
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.section>
+          </section>
 
-          {/* Streaming Platforms Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            className="mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-8 text-gradient">STREAM NOW</h2>
+          <section className="mb-16">
+            <h2 className="text-4xl font-black mb-10 text-gradient tracking-tight">STREAM NOW</h2>
             <div className="flex gap-4 flex-wrap">
-              {artist.social.youtube && (
-                <Link
-                  href={artist.social.youtube}
-                  target="_blank"
-                  className="px-8 py-4 glass rounded-xl hover:bg-red-600 transition-all hover:scale-105 font-bold flex items-center gap-2"
-                >
-                  <span className="text-2xl">📺</span> YouTube
-                </Link>
-              )}
-              {artist.social.spotify && (
-                <Link
-                  href={artist.social.spotify}
-                  target="_blank"
-                  className="px-8 py-4 glass rounded-xl hover:bg-green-600 transition-all hover:scale-105 font-bold flex items-center gap-2"
-                >
-                  <span className="text-2xl">🎵</span> Spotify
-                </Link>
-              )}
-              {artist.social.appleMusic && (
-                <Link
-                  href={artist.social.appleMusic}
-                  target="_blank"
-                  className="px-8 py-4 glass rounded-xl hover:bg-pink-600 transition-all hover:scale-105 font-bold flex items-center gap-2"
-                >
-                  <span className="text-2xl">🎶</span> Apple Music
-                </Link>
-              )}
+              {artist.social.youtube && <Link href={artist.social.youtube} target="_blank" className="px-8 py-4 glass rounded-xl hover:bg-red-600/80 transition-all font-bold">YouTube</Link>}
+              {artist.social.spotify && <Link href={artist.social.spotify} target="_blank" className="px-8 py-4 glass rounded-xl hover:bg-green-600/80 transition-all font-bold">Spotify</Link>}
+              {artist.social.appleMusic && <Link href={artist.social.appleMusic} target="_blank" className="px-8 py-4 glass rounded-xl hover:bg-pink-600/80 transition-all font-bold">Apple Music</Link>}
             </div>
-          </motion.section>
+          </section>
 
-          {/* Back Button */}
-          <motion.div 
-            className="mt-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            <Link 
-              href="/members"
-              className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
-            >
+          <div className="text-center">
+            <Link href="/members" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors tracking-wider">
               ← Back to Members
             </Link>
-          </motion.div>
-
+          </div>
         </div>
       </main>
     </>
-  )
+  );
 }

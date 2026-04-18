@@ -3,7 +3,7 @@
     "name": "Saran",
     "slug": "saran",
     "role": "Rapper / Producer",
-    "image": "/images/artists/saran.jpg",
+    "image": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=800&h=1000&fit=crop&auto=format",
     "bio": "Founder of DIEOUT. Master of sound design and lyrical warfare.",
     "top": true,
     "trending": true,
@@ -24,10 +24,10 @@
     }
   },
   {
-    "name": "Saran",
-    "slug": "saran",
+    "name": "Saran DIEOUT",
+    "slug": "saran-dieout",
     "role": "Rapper",
-    "image": "/images/artists/saran.jpg",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&auto=format",
     "bio": "SARAN DIEOUT",
     "top": true,
     "trending": false,
@@ -40,14 +40,14 @@
     "social": {
       "youtube": "https://www.youtube.com/channel/UCoSmqwN7LYbr-mO8ekglkag",
       "spotify": "https://open.spotify.com/artist/3moR9d0X97NAtZRhHWOta5",
-      "appleMusic": "youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqa3BvRFJCX0l6UUF6Mkw3b2gyU1pJMzBpSC0xUXxBQ3Jtc0tuQXhjZmR6QTZabXBtZzRhYUQ1WWxXbnphMHVRMW5BbUFnb3RkdGpPNTBsWEkxLUc1STlLMFBSRXJCT3pyNFVmRENfOVFGd1E2Zzk5d2tsRkZfTGs1ZUs2cWhDS2ZFcWRMVnc1YzkwNG5UemFnZHhCVQ&q=https%3A%2F%2Fmusic.apple.com%2Fth%2Fartist%2Fsaran%2F1133460295%2Fsee-all%3Fsection%3Dtop-songs"
+      "appleMusic": "https://music.apple.com/th/artist/saran/1133460295"
     }
   },
   {
     "name": "SEXSK1",
-    "slug": "SEXSK1",
+    "slug": "sexsk1",
     "role": "Hiphop/Rapper",
-    "image": "/images/artists/sexski.jpg",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1000&fit=crop&auto=format",
     "bio": "YOUNG SEXSK1",
     "top": false,
     "trending": true,
